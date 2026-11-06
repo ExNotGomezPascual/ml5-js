@@ -38,7 +38,7 @@ Nota legal (verificar antes de presentar): Ley 1581 de 2012 (Habeas Data), Decre
 
 ## Estructura
 
-Todo en un solo proyecto, en el orden de la exposición. `index.html` (raíz) es la portada que enlaza las tres partes.
+Todo en un solo proyecto, en el orden de la exposición. `index.html` (raíz) es la portada que enlaza las cuatro partes.
 - `1-presentacion/`: diapositivas HTML (explicación de la librería y cómo funciona).
 - `2-demos/`: tres mini demos (1-cara faceMesh, 2-manos handPose, 3-cuerpo bodyPose) + `comun.js`.
 - `3-mvp/`: el MVP 1 (filtro `index.html`, entrenamiento `entrenar.html`).
@@ -54,13 +54,14 @@ Hecho: MVP en `3-mvp/`, entrenado (modelo en `3-mvp/modelo/`, ejemplos en `3-mvp
 
 Hecho (2026-11-05): presentación en `1-presentacion/` como página web con secciones (no diapositivas): índice lateral, teclas ← →, enlaces a demos y MVP (sin cámara dentro de la presentación). Sin comparación con otras librerías (decisión de los autores). Datos faltantes marcados con la clase `.pendiente`.
 
-Hecho (2026-11-05): código del MVP 2 en `4-mvp-senas/`. Sin entrenar todavía.
+Hecho (2026-11-05): código del MVP 2 en `4-mvp-senas/`. Entrenado (confirmado el 2026-11-06): modelo en `4-mvp-senas/modelo/`, ejemplos en `4-mvp-senas/datos/`.
+
+Hecho (2026-11-06): repositorio Git privado en https://github.com/ExNotGomezPascual/ml5-js (rama `main`). Se sube todo, incluidos imágenes y `datos/ejemplos.json`. El remoto lleva el usuario en la URL (`https://ExNotGomezPascual@github.com/...`) porque Git en este equipo tiene guardada otra cuenta de GitHub (la de trabajo).
 
 El modelo de `3-mvp/modelo/` es del primer entrenamiento: 9 clases, de las que solo 5 siguen en la lista (joker, gato-presumido, perro-cejas, chihuahua-patas, video). Hay que reentrenar con los 12 memes actuales; faltan los 7 nuevos (perro-saludo, gato-fumador, tiburon-sonrisa, diablito-plan, dios-plan, gato-grito, paloma). `3-mvp/datos/ejemplos.json` aún tiene ejemplos de memes borrados; "Cargar ejemplos" los ignora.
 
 Pendiente:
-1. Entrenar el MVP 2
-2. Guion con reparto de tiempos entre los dos expositores (aún no se lo han repartido)
+1. Guion con reparto de tiempos entre los dos expositores (aún no se lo han repartido)
 
 ## Diseño del MVP 2 ("Escribir con señas")
 
