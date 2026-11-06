@@ -58,7 +58,9 @@ Hecho (2026-11-05): código del MVP 2 en `4-mvp-senas/`. Entrenado (confirmado e
 
 Hecho (2026-11-06): repositorio Git privado en https://github.com/ExNotGomezPascual/ml5-js (rama `main`). Se sube todo, incluidos imágenes y `datos/ejemplos.json`. En este equipo Git usa la cuenta de trabajo `TgomezBexSoluciones`, que es colaboradora del repositorio.
 
-El modelo de `3-mvp/modelo/` es del primer entrenamiento: 9 clases, de las que solo 5 siguen en la lista (joker, gato-presumido, perro-cejas, chihuahua-patas, video). Hay que reentrenar con los 12 memes actuales; faltan los 7 nuevos (perro-saludo, gato-fumador, tiburon-sonrisa, diablito-plan, dios-plan, gato-grito, paloma). `3-mvp/datos/ejemplos.json` aún tiene ejemplos de memes borrados; "Cargar ejemplos" los ignora.
+Reentrenado (confirmado el 2026-11-06): `3-mvp/modelo/` tiene las 12 clases actuales (red 171 → 16 → 12, pesos 11.8 KB) y `3-mvp/datos/ejemplos.json` tiene 2 788 ejemplos, solo de los memes actuales (180 a 359 por meme). MVP 2: 2 336 ejemplos, red 42 → 16 → 23, pesos 4.3 KB.
+
+En la presentación, los autores comentaron a mano varios bloques (resultados del MVP, cajas "Qué demuestra / Pendiente", sección "Consideraciones técnicas", sección "Pendientes"). Lo comentado se deja comentado; solo se actualiza el contenido visible.
 
 Pendiente:
 1. Guion con reparto de tiempos entre los dos expositores (aún no se lo han repartido)

@@ -40,10 +40,10 @@
         <li><a href="#costo">Costo de infraestructura</a></li>
         <li><a href="#privacidad">Privacidad</a></li>
         <li><a href="#ley">Ley colombiana</a></li>
-        <li><a href="#consideraciones">Consideraciones técnicas</a></li>
+        <!-- <li><a href="#consideraciones">Consideraciones técnicas</a></li> -->
         <li class="grupo" aria-hidden="true">6 · Cierre</li>
         <li><a href="#cierre">Cierre</a></li>
-        <li><a href="#pendientes">Pendientes</a></li>
+        <!-- <li><a href="#pendientes">Pendientes</a></li> -->
       </ol>
     </nav>
 
@@ -234,7 +234,7 @@ entradas.push((puntos[i].x - centroX) / escala);
 entradas.push((puntos[i].y - centroY) / escala);</code></pre>
         <h3>Ventajas</h3>
         <ul>
-          <li><strong>Pocos números</strong>: la red es pequeña (nuestro modelo pesa 11.6 KB) y aprende con menos ejemplos.</li>
+          <li><strong>Pocos números</strong>: la red es pequeña (el modelo de memes pesa 11.8 KB) y aprende con menos ejemplos.</li>
           <li><strong>No depende de la luz, el fondo ni la ropa</strong>: el modelo preentrenado ya resolvió eso.</li>
           <li><strong>Guardamos coordenadas, no fotos</strong>. Ojo: siguen siendo datos de la cara (ver Privacidad).</li>
         </ul>
@@ -276,17 +276,20 @@ red.<span class="k">classify</span>(entradas, (resultados, error) =&gt; { ... })
       <section class="seccion" id="ejemplos" aria-labelledby="t-ejemplos">
         <span class="etiqueta">2 · Recorrido</span>
         <h2 id="t-ejemplos" tabindex="-1">¿Cuántos ejemplos son suficientes?</h2>
-        <p class="entrada">No hay un número mágico. Lo medimos probando en vivo. Estos son los ejemplos reales del primer entrenamiento del MVP de memes (<code>3-mvp/datos/ejemplos.json</code>, <strong>2 339 en total</strong>). Después cambiamos la lista de memes:</p>
+        <p class="entrada">No hay un número mágico. Lo medimos probando en vivo. Estos son los ejemplos reales con los que entrenamos el MVP de memes (<code>3-mvp/datos/ejemplos.json</code>, <strong>2 788 en total</strong>, 12 memes):</p>
         <ul class="barras" aria-label="Ejemplos capturados por clase">
-          <li><span>corgi-feliz</span><span class="barra"><span style="width: 100%"></span></span><span class="num">450</span></li>
-          <li><span>chihuahua-patas</span><span class="barra"><span style="width: 80%"></span></span><span class="num">360</span></li>
-          <li><span>gato-presumido</span><span class="barra"><span style="width: 80%"></span></span><span class="num">360</span></li>
-          <li><span>joker</span><span class="barra"><span style="width: 79.8%"></span></span><span class="num">359</span></li>
-          <li><span>perro-cejas</span><span class="barra"><span style="width: 60%"></span></span><span class="num">270</span></li>
-          <li><span>tirado</span><span class="barra"><span style="width: 60%"></span></span><span class="num">270</span></li>
-          <li><span>perro-serio</span><span class="barra"><span style="width: 20%"></span></span><span class="num">90</span></li>
-          <li><span>llorando-emocion</span><span class="barra"><span style="width: 20%"></span></span><span class="num">90</span></li>
-          <li><span>video</span><span class="barra"><span style="width: 20%"></span></span><span class="num">90</span></li>
+          <li><span>perro-saludo</span><span class="barra"><span style="width: 100%"></span></span><span class="num">359</span></li>
+          <li><span>joker</span><span class="barra"><span style="width: 75.2%"></span></span><span class="num">270</span></li>
+          <li><span>diablito-plan</span><span class="barra"><span style="width: 75.2%"></span></span><span class="num">270</span></li>
+          <li><span>dios-plan</span><span class="barra"><span style="width: 75.2%"></span></span><span class="num">270</span></li>
+          <li><span>tiburon-sonrisa</span><span class="barra"><span style="width: 75.2%"></span></span><span class="num">270</span></li>
+          <li><span>gato-fumador</span><span class="barra"><span style="width: 74.9%"></span></span><span class="num">269</span></li>
+          <li><span>chihuahua-patas</span><span class="barra"><span style="width: 50.1%"></span></span><span class="num">180</span></li>
+          <li><span>gato-grito</span><span class="barra"><span style="width: 50.1%"></span></span><span class="num">180</span></li>
+          <li><span>gato-presumido</span><span class="barra"><span style="width: 50.1%"></span></span><span class="num">180</span></li>
+          <li><span>paloma</span><span class="barra"><span style="width: 50.1%"></span></span><span class="num">180</span></li>
+          <li><span>perro-cejas</span><span class="barra"><span style="width: 50.1%"></span></span><span class="num">180</span></li>
+          <li><span>video</span><span class="barra"><span style="width: 50.1%"></span></span><span class="num">180</span></li>
         </ul>
         <div class="rejilla">
           <div class="caja"><h3>Cada captura = ~90 ejemplos</h3><p>3 segundos capturando, un ejemplo cada 2 cuadros. Pero son 90 fotos casi iguales.</p></div>
@@ -345,19 +348,19 @@ red.<span class="k">classify</span>(entradas, (resultados, error) =&gt; { ... })
           <li>Cámara a la izquierda, meme a la derecha y el top 3 de memes más probables.</li>
           <li>Anti-parpadeo: el mismo meme 8 veces seguidas con confianza ≥ 0.6 antes de cambiar.</li>
           <li>Página de entrenamiento: clic en un meme, 3 s para posar, 3 s capturando.</li>
-          <li>Tecla P: mostrar u ocultar los puntos. Contador de FPS.</li>
+          <!-- <li>Tecla P: mostrar u ocultar los puntos. Contador de FPS.</li> -->
         </ul>
-        <h3>Resultado (datos del modelo guardado)</h3>
+        <!-- <h3>Resultado (datos del modelo guardado)</h3>
         <div class="rejilla">
           <div class="caja"><span class="grande">2 339</span><p>ejemplos capturados</p></div>
           <div class="caja"><span class="grande">5 / 12</span><p>memes de la lista actual ya entrenados</p></div>
           <div class="caja"><span class="grande">171 → 16 → 9</span><p>capas de la red (entrada, oculta, salida)</p></div>
           <div class="caja"><span class="grande">11.6 KB</span><p>pesos del modelo</p></div>
-        </div>
-        <div class="versus">
+        </div> -->
+        <!-- <div class="versus">
           <div class="caja ok"><h3>Qué demuestra</h3><p>Combinar dos modelos preentrenados con una red propia, entrenar en el navegador y reutilizar el modelo guardado.</p></div>
           <div class="caja alerta"><h3>Pendiente</h3><ul><li>Reentrenar con los 7 memes nuevos: perro-saludo, gato-fumador, tiburon-sonrisa, diablito-plan, dios-plan, gato-grito, paloma.</li><li>Gesto del meme "video". <span class="pendiente">por definir</span></li><li>Capturas de pantalla. <span class="pendiente">faltan</span></li></ul></div>
-        </div>
+        </div> -->
         <div class="acciones">
           <a class="boton" href="../3-mvp/index.html">Abrir el filtro</a>
           <a class="boton secundario" href="../3-mvp/entrenar.html">Abrir el entrenamiento</a>
@@ -378,10 +381,10 @@ red.<span class="k">classify</span>(entradas, (resultados, error) =&gt; { ... })
           <li>Para repetir una letra ("LL"), se baja la mano y se vuelve a hacer.</li>
           <li>Puntos relativos a la muñeca y divididos por el tamaño de la mano: solo importa la forma.</li>
         </ul>
-        <div class="versus">
+        <!-- <div class="versus">
           <div class="caja ok"><h3>Qué demuestra</h3><p>Que el mismo patrón de ml5 sirve para otro problema cambiando solo las entradas y las clases.</p></div>
           <div class="caja alerta"><h3>Pendiente</h3><ul><li>Capturar ejemplos y entrenar el modelo. <span class="pendiente">sin entrenar</span></li><li>Elegir los gestos de espacio y borrar.</li><li>Letras con movimiento (G, H, J, Ñ, S, Z): no caben en una sola "foto" de la mano.</li></ul></div>
-        </div>
+        </div> -->
         <div class="acciones">
           <a class="boton" href="../4-mvp-senas/index.html">Abrir escribir con señas</a>
           <a class="boton secundario" href="../4-mvp-senas/entrenar.html">Abrir el entrenamiento</a>
@@ -415,7 +418,7 @@ red.<span class="k">classify</span>(entradas, (resultados, error) =&gt; { ... })
         <h2 id="t-privacidad" tabindex="-1">Privacidad: local no significa sin riesgo</h2>
         <p class="entrada">La imagen no sale del computador. Aun así:</p>
         <div class="rejilla">
-          <div class="caja alerta"><h3>Los ejemplos son datos de la cara</h3><p><code>ejemplos.json</code> guarda 2 339 conjuntos de coordenadas de nuestras caras y manos. Si se comparte, se comparten esos datos.</p></div>
+          <div class="caja alerta"><h3>Los ejemplos son datos de la cara</h3><p><code>ejemplos.json</code> guarda 2 788 conjuntos de coordenadas de nuestras caras y manos. Si se comparte, se comparten esos datos.</p></div>
           <div class="caja alerta"><h3>Personas en el fondo</h3><p>La cámara capta a quien pase detrás, aunque no haya dado permiso.</p></div>
           <div class="caja alerta"><h3>Código de terceros</h3><p>La página carga scripts de un CDN. Por eso fijamos la versión exacta.</p></div>
           <div class="caja alerta"><h3>El usuario no lo puede comprobar</h3><p>Solo ve que la cámara está encendida. Hay que decirle qué se hace con ella.</p></div>
@@ -439,7 +442,7 @@ red.<span class="k">classify</span>(entradas, (resultados, error) =&gt; { ... })
         <p class="idea">Este contenido debe verificarse con las fuentes oficiales antes de presentar.</p>
       </section>
 
-      <section class="seccion" id="consideraciones" aria-labelledby="t-consideraciones">
+      <!-- <section class="seccion" id="consideraciones" aria-labelledby="t-consideraciones">
         <span class="etiqueta">5 · Lo que hay que saber</span>
         <h2 id="t-consideraciones" tabindex="-1">Consideraciones técnicas</h2>
         <div class="rejilla">
@@ -450,7 +453,7 @@ red.<span class="k">classify</span>(entradas, (resultados, error) =&gt; { ... })
           <div class="caja"><h3>Cambiar clases = reentrenar</h3><p>Agregar o quitar un meme o letra obliga a entrenar de nuevo.</p></div>
           <div class="caja"><h3>Luz y encuadre</h3><p>Si el modelo preentrenado no ve bien, la red propia tampoco acierta.</p></div>
         </div>
-      </section>
+      </section> -->
 
       <!-- ================= 6. CIERRE ================= -->
       <section class="seccion" id="cierre" aria-labelledby="t-cierre">
@@ -460,7 +463,7 @@ red.<span class="k">classify</span>(entradas, (resultados, error) =&gt; { ... })
         <div class="rejilla">
           <div class="caja ok"><h3>Valor</h3><ul><li>Empezar con dos líneas.</li><li>Modelos preentrenados + red propia.</li><li>Costo de infraestructura cero.</li></ul></div>
           <div class="caja alerta"><h3>Limitaciones</h3><ul><li>Depende del equipo del usuario.</li><li>Primera carga lenta.</li><li>Pocos ejemplos = red confundida.</li><li>Gestos con movimiento no caben en una "foto".</li></ul></div>
-          <div class="caja"><h3>Próximos pasos</h3><ul><li>Completar el entrenamiento de los dos MVP.</li><li>Medir FPS y tamaño de descarga.</li><li>Letras con movimiento (secuencias de puntos).</li></ul></div>
+          <div class="caja"><h3>Próximos pasos</h3><ul><li>Medir FPS y tamaño de descarga.</li><li>Letras con movimiento (secuencias de puntos).</li></ul></div>
         </div>
         <div class="acciones">
           <a class="boton" href="../index.html">Volver a la portada</a>
@@ -468,7 +471,7 @@ red.<span class="k">classify</span>(entradas, (resultados, error) =&gt; { ... })
         <p class="idea"><strong>Pruébenlo:</strong> ml5js.org tiene ejemplos listos para abrir y modificar.</p>
       </section>
 
-      <section class="seccion" id="pendientes" aria-labelledby="t-pendientes">
+      <!-- <section class="seccion" id="pendientes" aria-labelledby="t-pendientes">
         <span class="etiqueta">Para los expositores</span>
         <h2 id="t-pendientes" tabindex="-1">Datos pendientes</h2>
         <ul class="lista-pendientes">
@@ -479,7 +482,7 @@ red.<span class="k">classify</span>(entradas, (resultados, error) =&gt; { ... })
           <li>Medir FPS de cada MVP y tamaño de descarga de los modelos.</li>
           <li>Calibrar los umbrales de la demo 1 (boca 0.08, sonrisa 0.45).</li>
         </ul>
-      </section>
+      </section> -->
     </main>
   </div>
 
