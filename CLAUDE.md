@@ -56,7 +56,7 @@ Hecho (2026-11-05): presentación en `1-presentacion/` como página web con secc
 
 Hecho (2026-11-05): código del MVP 2 en `4-mvp-senas/`. Entrenado (confirmado el 2026-11-06): modelo en `4-mvp-senas/modelo/`, ejemplos en `4-mvp-senas/datos/`.
 
-Hecho (2026-11-06): repositorio Git privado en https://github.com/ExNotGomezPascual/ml5-js (rama `main`). Se sube todo, incluidos imágenes y `datos/ejemplos.json`. El remoto lleva el usuario en la URL (`https://ExNotGomezPascual@github.com/...`) porque Git en este equipo tiene guardada otra cuenta de GitHub (la de trabajo).
+Hecho (2026-11-06): repositorio Git privado en https://github.com/ExNotGomezPascual/ml5-js (rama `main`). Se sube todo, incluidos imágenes y `datos/ejemplos.json`. En este equipo Git usa la cuenta de trabajo `TgomezBexSoluciones`, que es colaboradora del repositorio.
 
 El modelo de `3-mvp/modelo/` es del primer entrenamiento: 9 clases, de las que solo 5 siguen en la lista (joker, gato-presumido, perro-cejas, chihuahua-patas, video). Hay que reentrenar con los 12 memes actuales; faltan los 7 nuevos (perro-saludo, gato-fumador, tiburon-sonrisa, diablito-plan, dios-plan, gato-grito, paloma). `3-mvp/datos/ejemplos.json` aún tiene ejemplos de memes borrados; "Cargar ejemplos" los ignora.
 
