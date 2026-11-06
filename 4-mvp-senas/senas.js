@@ -26,8 +26,11 @@ const SENAS = [
   })),
 
   // Dos gestos extra para controlar el texto
-  { clase: "espacio", texto: "␣", pista: "Gesto que ustedes elijan para ESPACIO (distinto a todas las letras)" },
-  { clase: "borrar",  texto: "⌫", pista: "Gesto que ustedes elijan para BORRAR (distinto a todas las letras)" },
+  // gesto: frase corta que se muestra en la galería de index.html
+  { clase: "espacio", texto: "␣", pista: "Mano izquierda recta, en posición horizontal",
+    gesto: "Mano izquierda recta y horizontal" },
+  { clase: "borrar",  texto: "⌫", pista: "Pulgar hacia abajo con la mano izquierda",
+    gesto: "Pulgar abajo, mano izquierda" },
 ];
 
 // Busca una seña por el nombre de su clase

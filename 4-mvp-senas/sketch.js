@@ -27,6 +27,8 @@ function preload() {
 }
 
 function setup() {
+  crearGaleria();
+
   const lienzo = createCanvas(ANCHO, ALTO);
   lienzo.parent("camara");
 
@@ -163,6 +165,29 @@ function mostrarRanking(resultados) {
       <span>${r.label}</span>
       <span class="barra"><span style="width: ${porcentaje}%"></span></span>
       <span class="num">${porcentaje}%</span>`;
+    lista.appendChild(item);
+  }
+}
+
+// ---------- Galería de señas (debajo de la cámara) ----------
+// Muestra todas las señas que la red conoce, para que la gente
+// sepa cuáles hay y cómo se hacen. Las letras usan el recorte de
+// la imagen de referencia; espacio y borrar no están en ella, así
+// que muestran su símbolo y una frase con el gesto.
+function crearGaleria() {
+  const lista = document.getElementById("galeria");
+  for (const sena of SENAS) {
+    const item = document.createElement("li");
+
+    const estilo = estiloFoto(sena.clase);
+    const imagen = estilo
+      ? `<span class="letra foto" style='${estilo}' aria-hidden="true"></span>`
+      : `<span class="letra" aria-hidden="true">${sena.texto}</span>`;
+
+    // Solo los gestos sin foto llevan la explicación debajo
+    const gesto = estilo ? "" : `<span class="gesto">${sena.gesto}</span>`;
+
+    item.innerHTML = `${imagen}<span class="nombre">${sena.clase}</span>${gesto}`;
     lista.appendChild(item);
   }
 }

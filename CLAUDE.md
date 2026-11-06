@@ -69,7 +69,8 @@ Pendiente:
 
 Decidido el 2026-11-05.
 - Solo las 21 letras estáticas del alfabeto LSC (lista en `4-mvp-senas/senas.js`). Según la imagen de referencia `4-mvp-senas/Abecedario-Lengua-De-Senas.webp` (dado.com.co), G, H, J, Ñ, S y Z llevan movimiento y quedan fuera. Las tarjetas de entrenamiento muestran el recorte de esa imagen para cada letra.
-- Además de las letras, clases "espacio" y "borrar" (gestos que eligen los autores).
+- Además de las letras, clases "espacio" (mano izquierda recta, horizontal) y "borrar" (pulgar abajo con la mano izquierda). Los gestos están en `4-mvp-senas/senas.js`.
+- `index.html` tiene debajo una galería con todas las señas (recorte de la imagen LSC + letra; espacio y borrar muestran símbolo + gesto). El filtro del MVP 1 tiene una galería igual con los 12 memes (solo imagen + nombre). Las dos las crea `crearGaleria()` en `sketch.js`.
 - Entrada (`4-mvp-senas/entradas.js`, 42 números): 21 puntos de una mano relativos a la muñeca, divididos por la distancia muñeca → base del dedo medio. Sin mano no se clasifica.
 - Escribir: sostener la seña 1 s con confianza >= 0.6. No repite mientras se sostiene; para repetir letra se baja la mano.
 - Entrenamiento igual al MVP 1 (3 s espera, 3 s captura, 60 épocas).
@@ -81,7 +82,7 @@ Decidido el 2026-11-05; reemplaza el diseño anterior de stickers por reglas.
 - Una sola red propia (`ml5.neuralNetwork`, classification) decide el meme. Cada meme es una clase. No hay reglas escritas a mano ni bodyPose.
 - Entrada de la red (`3-mvp/entradas.js`, 171 números): 42 puntos de faceMesh (boca, ojos, cejas, contorno) + hasta 2 manos de handPose (21 puntos), todo relativo a la nariz y dividido por el ancho de la cara. Un número 0/1 indica si hay cara y si hay cada mano; si falta, se llenan ceros.
 - Anti-parpadeo: el mismo meme 8 veces seguidas con confianza >= 0.6 antes de cambiar.
-- Lista de memes en `3-mvp/memes.js` (clase, archivo, pista de expresión); archivos en `3-mvp/memes/`. Desde el 2026-11-06 son 12 memes: 7 imágenes JPEG + 4 stickers WebP (diablito-plan y paloma son animados) + `video.mp4` (clase "video", el gesto lo eligen los autores). Los autores borraron perro-serio, corgi-feliz, corgi-asustado, chihuahua-reojo, gato-triste, llorando-emocion, explosion, senor-pasto y tirado. No hay clase de cara neutral ni de "sin persona".
+- Lista de memes en `3-mvp/memes.js` (clase, archivo, pista de expresión); archivos en `3-mvp/memes/`. Desde el 2026-11-06 son 12 memes: 7 imágenes JPEG + 4 stickers WebP (diablito-plan y paloma son animados) + `video.mp4` (clase "video": tapar la boca con la mano izquierda y levantar la derecha de frente a la altura del cachete). Los autores borraron perro-serio, corgi-feliz, corgi-asustado, chihuahua-reojo, gato-triste, llorando-emocion, explosion, senor-pasto y tirado. No hay clase de cara neutral ni de "sin persona".
 - Entrenamiento ANTES de la exposición en `3-mvp/entrenar.html`: clic en un meme, 3 s para posar, 3 s capturando. Entrenar, probar en vivo, `red.save()` y copiar model.json, model.weights.bin, model_meta.json a `3-mvp/modelo/`. "Guardar ejemplos" descarga ejemplos.json para `3-mvp/datos/` y poder retomar.
 - El filtro (`3-mvp/index.html` + `sketch.js`) carga el modelo con `red.load({ model, metadata, weights })`. Tecla P muestra/oculta los puntos.
 - faceMesh + handPose + red corren a la vez: se muestran los FPS (material para el tema de WebGL/rendimiento).

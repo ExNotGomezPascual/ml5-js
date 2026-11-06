@@ -27,6 +27,8 @@ function preload() {
 }
 
 function setup() {
+  crearGaleria();
+
   const lienzo = createCanvas(ANCHO, ALTO);
   lienzo.parent("camara");
 
@@ -135,6 +137,24 @@ function mostrarRanking(resultados) {
       <span>${r.label}</span>
       <span class="barra"><span style="width: ${porcentaje}%"></span></span>
       <span class="num">${porcentaje}%</span>`;
+    lista.appendChild(item);
+  }
+}
+
+// ---------- Galería de memes (debajo del filtro) ----------
+// Muestra todos los memes que la red conoce, para que la gente
+// sepa cuáles puede imitar. Solo imagen y nombre.
+function crearGaleria() {
+  const lista = document.getElementById("galeria");
+  for (const meme of MEMES) {
+    const item = document.createElement("li");
+
+    // El meme "video" se muestra como video en bucle, sin sonido
+    const imagen = meme.esVideo
+      ? `<video src="${meme.archivo}" autoplay muted loop playsinline></video>`
+      : `<img src="${meme.archivo}" alt="" loading="lazy">`;
+
+    item.innerHTML = `${imagen}<span class="nombre">${meme.clase}</span>`;
     lista.appendChild(item);
   }
 }

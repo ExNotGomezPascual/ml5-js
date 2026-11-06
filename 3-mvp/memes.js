@@ -21,7 +21,7 @@ const MEMES = [
   { clase: "dios-plan",        archivo: "memes/dios-plan.webp",        pista: "Manos juntas rezando frente a la boca, cara tranquila" },
   { clase: "gato-grito",       archivo: "memes/gato-grito.webp",       pista: "Boca muy abierta gritando y señalar a la cámara con el dedo" },
   { clase: "paloma",           archivo: "memes/paloma.webp",           pista: "Cabeza de perfil inclinada hacia abajo, como picoteando" },
-  { clase: "video",            archivo: "memes/video.mp4",             pista: "El gesto que ustedes elijan", esVideo: true },
+  { clase: "video",            archivo: "memes/video.mp4",             pista: "Tapar la boca con la mano izquierda y levantar la derecha de frente, a la altura del cachete", esVideo: true },
 ];
 
 // Busca un meme por el nombre de su clase

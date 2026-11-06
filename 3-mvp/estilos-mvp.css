@@ -187,3 +187,42 @@ button.principal {
 .grafica .punto { fill: var(--punto); stroke: var(--fondo); stroke-width: 2; }
 .grafica .num { fill: var(--tenue); font-size: 10px; font-variant-numeric: tabular-nums; }
 .grafica .valor { fill: var(--texto); font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* ---------- Galería de memes / señas (debajo del filtro) ----------
+   La usan 3-mvp/index.html y 4-mvp-senas/index.html */
+.galeria-seccion { margin-top: 28px; }
+.galeria-seccion h2 {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+.galeria {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+.galeria li {
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.galeria img,
+.galeria video {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+.galeria .nombre {
+  display: block;
+  padding: 8px 10px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
