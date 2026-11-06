@@ -1,0 +1,189 @@
+/* ==========================================================
+   Estilos extra del MVP. La base (colores, fuentes, cámara,
+   panel) viene de ../compartido/estilos.css
+   ========================================================== */
+
+/* ---------- Botones ---------- */
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+button {
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--linea);
+  background: var(--fondo);
+  color: var(--texto);
+  cursor: pointer;
+}
+button:hover:not(:disabled) { border-color: var(--punto); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+button.principal {
+  background: var(--punto);
+  border-color: var(--punto);
+  color: #1a1400;
+  font-weight: 700;
+}
+
+.mensaje {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--fondo);
+  color: var(--tenue);
+  font-size: 0.95rem;
+}
+
+/* ---------- Tarjetas de memes (página de entrenamiento) ---------- */
+.tarjetas {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 14px;
+}
+
+.tarjeta button {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: var(--superficie);
+  overflow: hidden;
+}
+.tarjeta.capturando button { border-color: var(--resalte); box-shadow: 0 0 0 2px var(--resalte); }
+
+.tarjeta img,
+.tarjeta video {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+.tarjeta .texto {
+  padding: 10px 12px 12px;
+  display: grid;
+  gap: 2px;
+}
+.tarjeta .clase {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1rem;
+}
+.tarjeta .pista {
+  color: var(--tenue);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+.tarjeta .cuenta {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--punto);
+}
+
+/* ---------- Meme elegido (página del filtro) ---------- */
+.meme {
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+}
+.meme img,
+.meme video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* llena todo el recuadro (puede recortar un poco los bordes) */
+  display: block;
+}
+.meme img[hidden],
+.meme video[hidden] { display: none; }
+
+/* ---------- Tamaño del filtro: que todo quepa en la pantalla ----------
+   --alto es la altura máxima de la cámara y del meme: el alto de la
+   ventana menos lo que ocupan el título, el nombre y el ranking.
+   El ancho de la página se calcula a partir de esa altura (4:3),
+   así la cámara y el meme crecen en pantallas grandes sin hacer scroll. */
+.pagina.filtro {
+  --alto: max(260px, calc(100vh - 290px));
+  max-width: calc(var(--alto) * 8 / 3 + 72px);
+  padding-top: 18px;
+  padding-bottom: 12px;
+}
+.filtro .encabezado { margin-bottom: 14px; }
+.filtro .zona { grid-template-columns: 1fr 1fr; }
+
+/* El meme es un recuadro igual a la cámara; el nombre va encima, abajo */
+.filtro .meme { position: relative; }
+.filtro .meme-nombre {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 28px 16px 12px;
+  font-size: 1.5rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: #fff;
+}
+.filtro .titulo-ranking {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 12px 0 8px;
+}
+.filtro .partes { gap: 4px; }
+.filtro .rendimiento { margin: 10px 0 0; }
+.filtro .idea { margin: 4px 0 0; font-size: 0.95rem; }
+
+@media (max-width: 960px) {
+  .filtro .zona { grid-template-columns: 1fr; }
+}
+
+.meme-nombre {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 14px 0 2px;
+}
+
+.rendimiento {
+  color: var(--tenue);
+  font-size: 0.9rem;
+  margin-top: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Gráfica del error al entrenar (../compartido/grafica.js) ----------
+   La usan los entrenadores de 3-mvp y 4-mvp-senas */
+.grafica {
+  margin: 0 0 18px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--fondo);
+}
+.grafica[hidden] { display: none; }
+.grafica figcaption {
+  color: var(--tenue);
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+.grafica svg { display: block; width: 100%; height: auto; overflow: visible; }
+.grafica .eje { stroke: var(--linea); stroke-width: 1; }
+.grafica .guia { stroke: var(--linea); stroke-width: 1; stroke-dasharray: 3 4; }
+.grafica .linea { fill: none; stroke: var(--punto); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.grafica .punto { fill: var(--punto); stroke: var(--fondo); stroke-width: 2; }
+.grafica .num { fill: var(--tenue); font-size: 10px; font-variant-numeric: tabular-nums; }
+.grafica .valor { fill: var(--texto); font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }

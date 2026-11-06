@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini demos de ml5.js</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../compartido/estilos.css">
+</head>
+<body>
+  <main class="pagina">
+    <header class="encabezado">
+      <h1>Tres modelos, una idea
+        <span class="modelo">Cada modelo convierte la imagen de la cámara en puntos con coordenadas.</span>
+      </h1>
+      <div class="acciones-encabezado">
+        <a class="boton-volver" href="../1-presentacion/index.html#demos">← Volver a la presentación</a>
+      </div>
+    </header>
+
+    <ol class="lista-demos">
+      <li>
+        <a href="1-cara/index.html">
+          <span class="paso">1</span>
+          <span class="titulo">La cara en 468 puntos</span>
+          <span class="desc">faceMesh: medimos la boca para saber si está abierta o sonriendo.</span>
+        </a>
+      </li>
+      <li>
+        <a href="2-manos/index.html">
+          <span class="paso">2</span>
+          <span class="titulo">La mano en 42 números</span>
+          <span class="desc">handPose: vemos exactamente lo que recibirá nuestra red neuronal.</span>
+        </a>
+      </li>
+      <li>
+        <a href="3-cuerpo/index.html">
+          <span class="paso">3</span>
+          <span class="titulo">El cuerpo y su confianza</span>
+          <span class="desc">bodyPose: el modelo también nos dice qué tan seguro está de cada punto.</span>
+        </a>
+      </li>
+    </ol>
+
+    <p class="idea">Abran esta página con <strong>Live Server</strong> en VS Code. El navegador pedirá permiso para usar la cámara: acéptenlo. Ningún fotograma sale del computador.</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,385 @@
+/* ==========================================================
+   Estilos de la presentación (página web con secciones).
+   La base (colores, fuentes) viene de ../compartido/estilos.css
+   ========================================================== */
+
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Enlace para saltar al contenido (solo visible con teclado) */
+.saltar {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  z-index: 10;
+  padding: 10px 14px;
+  background: var(--punto);
+  color: #1a1400;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.saltar:focus { left: 8px; }
+
+/* ---------- Distribución: índice + contenido ---------- */
+.marco {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.indice {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 28px 16px 28px 24px;
+  border-right: 1px solid var(--linea);
+}
+.indice .marca {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--texto);
+  text-decoration: none;
+  margin-bottom: 18px;
+}
+.indice ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+  counter-reset: sec;
+}
+.indice li a {
+  display: block;
+  padding: 7px 10px;
+  border-radius: 8px;
+  color: var(--tenue);
+  text-decoration: none;
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+.indice li a:hover { color: var(--texto); background: var(--superficie); }
+.indice li a[aria-current="true"] {
+  color: var(--texto);
+  background: var(--superficie);
+  box-shadow: inset 3px 0 0 var(--punto);
+}
+.indice .grupo {
+  margin: 14px 0 4px 10px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--punto);
+}
+
+/* Botón del índice en móvil */
+.abrir-indice { display: none; }
+
+@media (max-width: 900px) {
+  .marco { grid-template-columns: minmax(0, 1fr); }
+  .indice {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(300px, 85vw);
+    z-index: 20;
+    background: var(--fondo);
+    transform: translateX(-100%);
+    transition: transform 160ms ease;
+  }
+  .indice.abierto { transform: none; box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.55); }
+  .abrir-indice {
+    display: inline-flex;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 15;
+    font: inherit;
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--linea);
+    background: var(--superficie);
+    color: var(--texto);
+    cursor: pointer;
+  }
+}
+
+/* ---------- Contenido ---------- */
+.contenido {
+  padding: 0 40px 80px;
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  .contenido { padding: 56px 16px 80px; }
+}
+
+.seccion {
+  padding: 56px 0 24px;
+  border-bottom: 1px solid var(--linea);
+}
+.seccion:last-of-type { border-bottom: 0; }
+
+.seccion .etiqueta {
+  display: inline-block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--punto);
+  margin-bottom: 6px;
+}
+.seccion h2 {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+.seccion h3 {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+.seccion p { max-width: 70ch; }
+.entrada {
+  font-size: 1.2rem;
+  color: var(--tenue);
+  max-width: 62ch;
+}
+.entrada strong { color: var(--texto); }
+
+/* Portada */
+.portada {
+  padding-top: 72px;
+  padding-bottom: 48px;
+}
+.portada h1 {
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0 0 18px;
+}
+.portada h1 span { color: var(--punto); }
+.autores { color: var(--tenue); }
+
+/* ---------- Tarjetas en rejilla ---------- */
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+.caja {
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+.caja p { margin: 0; color: var(--tenue); }
+.caja ul, .caja ol { margin: 0; padding-left: 1.2em; color: var(--tenue); }
+.caja li + li { margin-top: 4px; }
+.caja .grande {
+  display: block;
+  font-family: var(--display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--punto);
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.caja.alerta { border-color: var(--resalte); }
+.caja.ok { border-color: var(--ok); }
+
+/* Dos columnas comparadas */
+.versus {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 20px 0;
+}
+@media (max-width: 700px) { .versus { grid-template-columns: 1fr; } }
+
+/* ---------- Código ---------- */
+pre {
+  margin: 16px 0;
+  padding: 16px 18px;
+  background: #0a0c18;
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+code { font-family: Consolas, "Cascadia Code", monospace; }
+:not(pre) > code {
+  background: var(--superficie);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+pre .c { color: #7f88b0; }   /* comentario */
+pre .k { color: var(--resalte); } /* palabra clave / función ml5 */
+pre .s { color: var(--ok); }  /* texto */
+
+/* ---------- Diagramas ---------- */
+.diagrama {
+  margin: 20px 0;
+  padding: 16px;
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: 14px;
+  overflow-x: auto;
+}
+.diagrama svg { display: block; width: 100%; min-width: 620px; height: auto; }
+.diagrama figcaption { color: var(--tenue); font-size: 0.9rem; margin-top: 10px; }
+
+/* Flujo simple con cajas y flechas (se apila en móvil) */
+.flujo {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 10px;
+}
+.flujo li {
+  flex: 1 1 140px;
+  position: relative;
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+}
+.flujo li strong { display: block; font-family: var(--display); }
+.flujo li span { color: var(--tenue); font-size: 0.88rem; }
+
+/* Barra de 171 números (de qué está hecha la entrada) */
+.composicion {
+  display: flex;
+  height: 34px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 12px 0 8px;
+}
+.composicion span { display: block; }
+.leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--tenue);
+  font-size: 0.9rem;
+}
+.leyenda i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+/* Barras horizontales (ejemplos por clase) */
+.barras {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  display: grid;
+  gap: 6px;
+}
+.barras li {
+  display: grid;
+  grid-template-columns: 10em 1fr 3em;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.92rem;
+}
+.barras .barra { height: 14px; background: var(--linea); border-radius: 4px; overflow: hidden; }
+.barras .barra span { display: block; height: 100%; background: var(--punto); }
+.barras .num { text-align: right; font-variant-numeric: tabular-nums; color: var(--tenue); }
+.barras li.falta { color: var(--tenue); }
+.barras li.falta .num { color: var(--resalte); }
+@media (max-width: 520px) {
+  .barras li { grid-template-columns: 7.5em 1fr 2.6em; font-size: 0.85rem; }
+}
+
+/* ---------- Demos y MVP ---------- */
+.demo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin: 12px 0 8px;
+}
+@media (max-width: 800px) { .demo { grid-template-columns: 1fr; } }
+.demo-titulo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 28px;
+}
+.boton {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: var(--punto);
+  color: #1a1400;
+  font-weight: 700;
+  text-decoration: none;
+}
+.boton.secundario {
+  background: transparent;
+  color: var(--texto);
+  border: 1px solid var(--linea);
+}
+.boton:hover { filter: brightness(1.08); }
+.acciones { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+
+/* Marca de dato pendiente o por verificar */
+.pendiente {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px dashed var(--resalte);
+  color: var(--resalte);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Lista de pendientes final */
+.lista-pendientes li { margin-bottom: 6px; }
+
+/* ---------- Anterior / siguiente ---------- */
+.navegacion {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 15;
+}
+.navegacion button {
+  font: inherit;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid var(--linea);
+  background: var(--superficie);
+  color: var(--texto);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.navegacion button:hover { border-color: var(--punto); }
+button:focus-visible { outline: 3px solid var(--punto); outline-offset: 3px; }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escribir con señas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../compartido/estilos.css">
+  <link rel="stylesheet" href="../3-mvp/estilos-mvp.css">
+  <link rel="stylesheet" href="estilos-senas.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ml5@1.2.1/dist/ml5.min.js"></script>
+</head>
+<body>
+  <main class="pagina">
+    <header class="encabezado">
+      <h1>Escribir con señas
+        <span class="modelo">handPose + red neuronal entrenada por nosotros · alfabeto LSC (letras estáticas)</span>
+      </h1>
+      <div class="acciones-encabezado">
+        <a class="boton-volver" href="../1-presentacion/index.html#mvp-senas">← Volver a la presentación</a>
+        <a class="volver" href="entrenar.html">Entrenar</a>
+      </div>
+    </header>
+
+    <div class="zona">
+      <div class="camara" id="camara">
+        <p class="estado" id="estado">Cargando los modelos…</p>
+      </div>
+
+      <aside class="panel">
+        <h2>Texto</h2>
+        <p class="escrito" id="texto" aria-live="polite"></p>
+
+        <h2>Seña que estás haciendo</h2>
+        <div class="sosteniendo">
+          <span class="actual" id="sena-actual">—</span>
+          <div>
+            <div class="medidor"><div class="relleno" id="barra-sostener"></div></div>
+            <div class="medidor-pie"><span>sostén la seña</span><span>se escribe</span></div>
+          </div>
+        </div>
+
+        <h2>Lo que piensa la red</h2>
+        <ul class="partes" id="ranking"></ul>
+
+        <p class="rendimiento" id="fps">— cuadros por segundo</p>
+      </aside>
+    </div>
+
+    <p class="idea">Sostengan la seña <strong>1 segundo</strong> para escribirla. Para repetir una letra (ej. "LL"), bajen la mano y vuelvan a hacerla. Tecla <strong>P</strong>: mostrar u ocultar los puntos de la mano.</p>
+  </main>
+
+  <script src="senas.js"></script>
+  <script src="entradas.js"></script>
+  <script src="sketch.js"></script>
+</body>
+</html>

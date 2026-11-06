@@ -1,0 +1,7 @@
+# Archivos que crean Windows y macOS automáticamente
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Configuración local del editor
+.vscode/

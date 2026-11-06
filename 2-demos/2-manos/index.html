@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo 2 · handPose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../compartido/estilos.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ml5@1.2.1/dist/ml5.min.js"></script>
+</head>
+<body>
+  <main class="pagina">
+    <header class="encabezado">
+      <h1>La mano en 42 números
+        <span class="modelo">Modelo preentrenado: ml5.handPose</span>
+      </h1>
+      <div class="acciones-encabezado">
+        <a class="boton-volver" href="../../1-presentacion/index.html#demos">← Volver a la presentación</a>
+        <a class="volver" href="../index.html">Todas las demos</a>
+      </div>
+    </header>
+
+    <div class="zona">
+      <div class="camara" id="camara">
+        <p class="estado" id="estado">Cargando el modelo…</p>
+      </div>
+
+      <aside class="panel" aria-live="off">
+        <h2>Lo que devuelve el modelo</h2>
+
+        <div class="lectura">
+          <span class="nombre">Puntos de la mano</span>
+          <span class="valor" id="total">—</span>
+        </div>
+
+        <div class="lectura">
+          <span class="nombre">Confianza de la detección</span>
+          <span class="valor" id="confianza">—</span>
+        </div>
+
+        <div class="lectura">
+          <span class="nombre">Lista de coordenadas (x, y) de los 21 puntos</span>
+          <p class="numeros" id="numeros">Muestren una mano a la cámara.</p>
+        </div>
+      </aside>
+    </div>
+
+    <p class="idea">Esta lista de <strong>42 números</strong> es todo lo que recibirá nuestra red neuronal. No le pasamos la foto: le pasamos la posición de los dedos. Por eso entrena en segundos y necesita pocos ejemplos. En el MVP, además, restaremos la posición de la muñeca para que el gesto se reconozca en cualquier parte de la pantalla.</p>
+  </main>
+
+  <script src="../comun.js"></script>
+  <script src="sketch.js"></script>
+</body>
+</html>

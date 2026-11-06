@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo 1 · faceMesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../compartido/estilos.css">
+
+  <!-- Librerías: p5.js para dibujar y ml5.js para la IA -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ml5@1.2.1/dist/ml5.min.js"></script>
+</head>
+<body>
+  <main class="pagina">
+    <header class="encabezado">
+      <h1>La cara en 468 puntos
+        <span class="modelo">Modelo preentrenado: ml5.faceMesh</span>
+      </h1>
+      <div class="acciones-encabezado">
+        <a class="boton-volver" href="../../1-presentacion/index.html#demos">← Volver a la presentación</a>
+        <a class="volver" href="../index.html">Todas las demos</a>
+      </div>
+    </header>
+
+    <div class="zona">
+      <div class="camara" id="camara">
+        <p class="estado" id="estado">Cargando el modelo…</p>
+      </div>
+
+      <aside class="panel" aria-live="polite">
+        <h2>Lo que devuelve el modelo</h2>
+
+        <div class="lectura">
+          <span class="nombre">Puntos detectados</span>
+          <span class="valor" id="total">—</span>
+        </div>
+
+        <div class="lectura">
+          <span class="nombre">Apertura de la boca</span>
+          <span class="valor" id="apertura">—</span>
+          <div class="medidor"><div class="relleno" id="barra-apertura"></div><div class="umbral" id="umbral-apertura"></div></div>
+          <div class="medidor-pie"><span>cerrada</span><span>abierta</span></div>
+          <div class="regla" id="regla-boca"><span class="luz"></span>Boca abierta → sticker “¡WOW!”</div>
+        </div>
+
+        <div class="lectura">
+          <span class="nombre">Ancho de la boca</span>
+          <span class="valor" id="sonrisa">—</span>
+          <div class="medidor"><div class="relleno" id="barra-sonrisa"></div><div class="umbral" id="umbral-sonrisa"></div></div>
+          <div class="medidor-pie"><span>neutra</span><span>sonrisa</span></div>
+          <div class="regla" id="regla-sonrisa"><span class="luz"></span>Sonrisa → sticker de corazones</div>
+        </div>
+      </aside>
+    </div>
+
+    <p class="idea">El modelo <strong>no sabe qué es una sonrisa</strong>: solo entrega puntos. Nosotros escribimos la regla midiendo distancias entre ellos. Dividimos entre el tamaño de la cara para que la medida no cambie si se acercan o se alejan de la cámara. La línea blanca de cada barra es el umbral: si no les funciona bien, ajústenlo en <strong>sketch.js</strong> mirando los números en vivo.</p>
+  </main>
+
+  <script src="../comun.js"></script>
+  <script src="sketch.js"></script>
+</body>
+</html>
